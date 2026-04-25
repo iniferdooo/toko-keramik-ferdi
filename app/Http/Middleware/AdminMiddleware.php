@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
+
+class AdminMiddleware
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login')
+                ->with('error', 'Silakan login terlebih dahulu.');
+        }
+
+        /** @var User $user */
+        $user = auth()->user();
+
+        if (!$user->isAdmin()) {
+            abort(403, 'Akses ditolak. Halaman ini khusus admin.');
+        }
+
+        return $next($request);
+    }
+}
