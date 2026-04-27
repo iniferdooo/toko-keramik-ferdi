@@ -30,7 +30,6 @@ class Order extends Model
         'total'    => 'decimal:2',
     ];
 
-    // Label status dalam Bahasa Indonesia
     public function getStatusLabelAttribute(): string
     {
         return match($this->status) {
@@ -44,7 +43,6 @@ class Order extends Model
         };
     }
 
-    // Warna badge status
     public function getStatusColorAttribute(): string
     {
         return match($this->status) {
@@ -58,21 +56,18 @@ class Order extends Model
         };
     }
 
-    // Generate nomor order otomatis
     public static function generateOrderNumber(): string
     {
         $date = now()->format('Ymd');
         $last = self::whereDate('created_at', today())->count() + 1;
         return 'ORD-' . $date . '-' . str_pad($last, 3, '0', STR_PAD_LEFT);
-    }
+    } // ← ini yang kurang!
 
-    // Relasi ke user
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relasi ke order items
     public function items()
     {
         return $this->hasMany(OrderItem::class);

@@ -41,7 +41,7 @@ class ProductController extends Controller
             default      => $query->latest(),
         };
 
-        $products   = $query->paginate(12)->withQueryString();
+        $products = $query->paginate(12)->appends(request()->query());
         $categories = Category::all();
         $sizes      = Product::distinct()->pluck('size')->sort()->values();
 
