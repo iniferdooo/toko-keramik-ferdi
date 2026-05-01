@@ -6,26 +6,15 @@
         "laravel",
         "framework"
     ],
-        "repositories": [
-        {
-            "type": "path",
-            "url": "vendor/livewire/livewire",
-            "options": {
-                "symlink": false
-            }
-        }
-    ],
     "license": "MIT",
-    
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "livewire/livewire": "*",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.0"
     },
-    
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "*",
@@ -69,17 +58,15 @@
         }
     },
     "config": {
-          "platform": {
-    "php": "8.1.10"
-  },
+        "platform": {
+            "php": "8.2.0"
+        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true,
-            "disable-tls": true,
-            "secure-http": false
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",
